@@ -4,7 +4,5 @@ namespace Jedkirby\ValPal;
 
 class MyClass
 {
-
-    private $items = array();
-
+    private $items = [];
 }
