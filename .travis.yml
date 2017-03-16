@@ -1,0 +1,18 @@
+language: php
+php:
+  - 5.6
+  - 7.0
+
+install:
+  - composer install --no-interaction
+  - composer dump-autoload --optimize
+
+before_script:
+  - mkdir -p build/logs
+
+script:
+  - php ./vendor/bin/phpunit -c phpunit.xml.dist
+  - php ./vendor/bin/php-cs-fixer --dry-run -v fix
+
+after_script:
+  - travis_retry php ./vendor/bin/coveralls -v
