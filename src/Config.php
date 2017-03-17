@@ -2,6 +2,9 @@
 
 namespace Jedkirby\ValPal;
 
+/**
+ * @codeCoverageIgnore
+ */
 class Config
 {
     /**

@@ -2,6 +2,9 @@
 
 namespace Jedkirby\ValPal\Entity;
 
+/**
+ * @codeCoverageIgnore
+ */
 class ValuationRequest
 {
     /**

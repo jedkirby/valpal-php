@@ -172,6 +172,9 @@ class ClientTest extends AbstractTestCase
         $this->assertEquals($valuation->getTenure(), 'Leasehold');
         $this->assertEquals($valuation->getBedrooms(), 1);
         $this->assertEquals($valuation->getPropertyConstructionYear(), 1973);
+        $this->assertNull($valuation->getMinRentalValuation());
+        $this->assertNull($valuation->getRentalValuation());
+        $this->assertNull($valuation->getMaxRentalValuation());
         $this->assertTrue($valuation->isLetting());
         $this->assertFalse($valuation->isSales());
         $this->assertFalse($valuation->isLettingAndSales());
@@ -199,6 +202,9 @@ class ClientTest extends AbstractTestCase
         $this->assertEquals($valuation->getTenure(), 'Freehold');
         $this->assertEquals($valuation->getBedrooms(), 3);
         $this->assertEquals($valuation->getPropertyConstructionYear(), 2001);
+        $this->assertNull($valuation->getMinRentalValuation());
+        $this->assertNull($valuation->getRentalValuation());
+        $this->assertNull($valuation->getMaxRentalValuation());
         $this->assertFalse($valuation->isLetting());
         $this->assertTrue($valuation->isSales());
         $this->assertFalse($valuation->isLettingAndSales());
@@ -232,5 +238,55 @@ class ClientTest extends AbstractTestCase
         $this->assertFalse($valuation->isLetting());
         $this->assertFalse($valuation->isSales());
         $this->assertTrue($valuation->isLettingAndSales());
+    }
+
+    public function testVerifyFormParamsAreCorrect()
+    {
+        $body = $this->getResponseFixture('Successful/both.xml');
+
+        $stream = Mockery::mock(
+            Stream::class,
+            [
+                'getBody' => $body,
+            ]
+        );
+
+        $httpClient = Mockery::mock(HttpClient::class);
+        $httpClient
+            ->shouldReceive('request')
+            ->with(
+                'POST',
+                'https://www.valpal.co.uk/api',
+                [
+                    'debug' => false,
+                    'form_params' => [
+                        'username' => 'joe.bloggs',
+                        'pass' => '1a2b3c4d5e6f',
+                        'type' => 'sales',
+                        'reference' => '13S0A138G',
+                        'buildname' => 'Building Name',
+                        'subBname' => 'Sub-Building Name',
+                        'number' => '2',
+                        'street' => 'Street',
+                        'depstreet' => 'Dependent Street',
+                        'postcode' => 'A12 3BC',
+                        'emailaddress' => 'joe@email.com',
+                        'name' => 'Joe Bloggs',
+                        'phone' => '01789123456',
+                    ]
+                ]
+            )
+            ->andReturn($stream)
+            ->once();
+
+
+        $client = new Client(
+            $this->getConfig(),
+            $this->getHttpClient($body)
+        );
+
+        $client->getBothValuations(
+            $this->getValuationRequest()
+        );
     }
 }
