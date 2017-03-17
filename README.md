@@ -62,7 +62,7 @@ Before being able to make any type of request, it's required that you create a v
 
 All the below options are correct as defined by [PAF].
 
-The validation request constructor has six required parameters, and four optional. In this order, these are:
+The valuation request constructor has six required parameters, and four optional. In this order, these are:
 
 - `$buildingName` `string` : This is the name of a building containing more than one residence **(Required)**
 - `$subBuildingName` `string` : This is the name or number of a sub building **(Required)**
@@ -102,7 +102,7 @@ use Jedkirby\ValPal\Client;
 $client = new Client($config);
 ```
 
-With the client object, there are three public methods available to use, which dictate the type of request you may require. Each of these methods requires the `ValidationRequest` object.
+With the client object, there are three public methods available to use, which dictate the type of request you may require. Each of these methods requires the `ValuationRequest` object.
 
 - `$client->getLettingValuation(ValuationRequest $request)`
 - `$client->getSalesValuation(ValuationRequest $request)`
