@@ -7,59 +7,59 @@ abstract class AbstractValuation
     /**
      * @var string
      */
-    protected $minValuation;
+    private $minValuation;
 
     /**
      * @var string
      */
-    protected $valuation;
+    private $valuation;
 
     /**
      * @var string
      */
-    protected $maxValuation;
+    private $maxValuation;
 
     /**
      * @var string
      */
-    protected $propertyType;
+    private $propertyType;
 
     /**
      * @var string
      */
-    protected $tenure;
+    private $tenure;
+
+    /**
+     * @var int
+     */
+    private $bedrooms;
+
+    /**
+     * @var int
+     */
+    private $propertyConstructionYear;
 
     /**
      * @var string
      */
-    protected $bedrooms;
+    private $minRentalValuation;
 
     /**
      * @var string
      */
-    protected $propertyConstructionYear;
+    private $rentalValuation;
 
     /**
      * @var string
      */
-    protected $minRentalValuation;
-
-    /**
-     * @var string
-     */
-    protected $rentalValuation;
-
-    /**
-     * @var string
-     */
-    protected $maxRentalValuation;
+    private $maxRentalValuation;
 
     /**
      * @param string $value
      */
     public function setMinValuation($value)
     {
-        $this->minValuation = $value;
+        $this->minValuation = (string) $value;
     }
 
     /**
@@ -67,7 +67,7 @@ abstract class AbstractValuation
      */
     public function setValuation($value)
     {
-        $this->valuation = $value;
+        $this->valuation = (string) $value;
     }
 
     /**
@@ -75,7 +75,7 @@ abstract class AbstractValuation
      */
     public function setMaxValuation($value)
     {
-        $this->maxValuation = $value;
+        $this->maxValuation = (string) $value;
     }
 
     /**
@@ -83,7 +83,7 @@ abstract class AbstractValuation
      */
     public function setPropertyType($type)
     {
-        $this->propertyType = $type;
+        $this->propertyType = (string) $type;
     }
 
     /**
@@ -91,23 +91,23 @@ abstract class AbstractValuation
      */
     public function setTenure($tenure)
     {
-        $this->tenure = $tenure;
+        $this->tenure = (string) $tenure;
     }
 
     /**
-     * @param string $bedrooms
+     * @param int $bedrooms
      */
     public function setBedrooms($bedrooms)
     {
-        $this->bedrooms = $bedrooms;
+        $this->bedrooms = (int) $bedrooms;
     }
 
     /**
-     * @param string $year
+     * @param int $year
      */
     public function setPropertyConstructionYear($year)
     {
-        $this->propertyConstructionYear = $year;
+        $this->propertyConstructionYear = (int) $year;
     }
 
     /**
@@ -115,7 +115,7 @@ abstract class AbstractValuation
      */
     public function setMinRentalValuation($value)
     {
-        $this->minRentalValuation = $value;
+        $this->minRentalValuation = (string) $value;
     }
 
     /**
@@ -123,7 +123,7 @@ abstract class AbstractValuation
      */
     public function setRentalValuation($value)
     {
-        $this->rentalValuation = $value;
+        $this->rentalValuation = (string) $value;
     }
 
     /**
@@ -131,7 +131,7 @@ abstract class AbstractValuation
      */
     public function setMaxRentalValuation($value)
     {
-        $this->maxRentalValuation = $value;
+        $this->maxRentalValuation = (string) $value;
     }
 
     /**
@@ -175,7 +175,7 @@ abstract class AbstractValuation
     }
 
     /**
-     * @return string
+     * @return int
      */
     public function getBedrooms()
     {
@@ -183,7 +183,7 @@ abstract class AbstractValuation
     }
 
     /**
-     * @return string
+     * @return int
      */
     public function getPropertyConstructionYear()
     {

@@ -19,16 +19,16 @@ class BothValuation extends AbstractValuation
     public static function fromXml(XML $xml)
     {
         $valuation = new static();
-        $valuation->setMinValuation((string) $xml->minvaluation);
-        $valuation->setValuation((string) $xml->valuation);
-        $valuation->setMaxValuation((string) $xml->maxvaluation);
-        $valuation->setPropertyType((string) $xml->propertytype);
-        $valuation->setTenure((string) $xml->tenure);
-        $valuation->setBedrooms((int) $xml->bedrooms);
-        $valuation->setPropertyConstructionYear((int) $xml->yearofpropertyconstruction);
-        $valuation->setMinRentalValuation((string) $xml->minrentalvaluation);
-        $valuation->setRentalValuation((string) $xml->rentalvaluation);
-        $valuation->setMaxRentalValuation((string) $xml->maxrentalvaluation);
+        $valuation->setMinValuation($xml->minvaluation);
+        $valuation->setValuation($xml->valuation);
+        $valuation->setMaxValuation($xml->maxvaluation);
+        $valuation->setPropertyType($xml->propertytype);
+        $valuation->setTenure($xml->tenure);
+        $valuation->setBedrooms($xml->bedrooms);
+        $valuation->setPropertyConstructionYear($xml->yearofpropertyconstruction);
+        $valuation->setMinRentalValuation($xml->minrentalvaluation);
+        $valuation->setRentalValuation($xml->rentalvaluation);
+        $valuation->setMaxRentalValuation($xml->maxrentalvaluation);
 
         return $valuation;
     }

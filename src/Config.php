@@ -39,10 +39,10 @@ class Config
         $endpoint = 'https://www.valpal.co.uk/api',
         $debug = false
     ) {
-        $this->username = $username;
-        $this->password = $password;
-        $this->endpoint = $endpoint;
-        $this->debug = $debug;
+        $this->username = (string) $username;
+        $this->password = (string) $password;
+        $this->endpoint = (string) $endpoint;
+        $this->debug = (bool) $debug;
     }
 
     /**
@@ -50,7 +50,7 @@ class Config
      */
     public function setUsername($username)
     {
-        $this->username = $username;
+        $this->username = (string) $username;
     }
 
     /**
@@ -58,7 +58,7 @@ class Config
      */
     public function setPassword($password)
     {
-        $this->password = $password;
+        $this->password = (string) $password;
     }
 
     /**
@@ -66,7 +66,7 @@ class Config
      */
     public function setEndpoint($endpoint)
     {
-        $this->endpoint = $endpoint;
+        $this->endpoint = (string) $endpoint;
     }
 
     /**
@@ -74,7 +74,7 @@ class Config
      */
     public function setDebug($debug)
     {
-        $this->debug = $debug;
+        $this->debug = (bool) $debug;
     }
 
     /**
