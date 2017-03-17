@@ -110,8 +110,6 @@ class Client
             );
 
             return $entity::fromXml($xml);
-        } catch (ResponseException $e) {
-            throw $e;
         } catch (Exception $e) {
             throw new ResponseException(
                 $e->getMessage(),

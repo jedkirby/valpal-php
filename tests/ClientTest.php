@@ -26,21 +26,17 @@ class ClientTest extends AbstractTestCase
 
     private function getHttpClient($body)
     {
-        $stream = Mockery::mock(
-            Stream::class,
-            [
-                'getBody' => $body,
-            ]
-        );
-
-        $httpClient = Mockery::mock(
+        return Mockery::mock(
             HttpClient::class,
             [
-                'request' => $stream,
+                'request' => Mockery::mock(
+                    Stream::class,
+                    [
+                        'getBody' => $body,
+                    ]
+                ),
             ]
         );
-
-        return $httpClient;
     }
 
     private function getValuationRequest()
@@ -131,6 +127,7 @@ class ClientTest extends AbstractTestCase
 
     /**
      * @expectedException \Jedkirby\ValPal\Exception\ResponseException
+     * @expectedExceptionMessage String could not be parsed as XML
      */
     public function testInvalidXmlErrorHandling()
     {
@@ -141,14 +138,9 @@ class ClientTest extends AbstractTestCase
             $this->getHttpClient($body)
         );
 
-        try {
-            $client->getLettingValuation(
-                $this->getValuationRequest()
-            );
-        } catch (ResponseException $e) {
-            $this->assertEquals($e->getMessage(), 'String could not be parsed as XML');
-            throw $e;
-        }
+        $client->getLettingValuation(
+            $this->getValuationRequest()
+        );
     }
 
     public function testSuccessForLettingsType()
@@ -263,7 +255,7 @@ class ClientTest extends AbstractTestCase
                     'form_params' => [
                         'username' => 'joe.bloggs',
                         'pass' => '1a2b3c4d5e6f',
-                        'type' => 'sales',
+                        'type' => 'both',
                         'reference' => '13S0A138G',
                         'buildname' => 'Building Name',
                         'subBname' => 'Sub-Building Name',
@@ -282,7 +274,7 @@ class ClientTest extends AbstractTestCase
 
         $client = new Client(
             $this->getConfig(),
-            $this->getHttpClient($body)
+            $httpClient
         );
 
         $client->getBothValuations(
