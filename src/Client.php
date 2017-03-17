@@ -73,10 +73,7 @@ class Client
      */
     private function getValuation($type, ValuationRequest $request)
     {
-        $request->setType($type);
-
         try {
-
             $response = $this->httpClient->request(
                 'POST',
                 $this->config->getEndpoint(),
@@ -85,7 +82,7 @@ class Client
                     'form_params' => [
                         'username' => $this->config->getUsername(),
                         'pass' => $this->config->getPassword(),
-                        'type' => $request->getType(),
+                        'type' => $type,
                         'reference' => $request->getReference(),
                         'buildname' => $request->getBuildingName(),
                         'subBname' => $request->getSubBuildingName(),

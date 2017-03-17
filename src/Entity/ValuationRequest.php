@@ -7,11 +7,6 @@ class ValuationRequest
     /**
      * @var string
      */
-    private $type;
-
-    /**
-     * @var string
-     */
     private $buildingName;
 
     /**
@@ -96,14 +91,6 @@ class ValuationRequest
     }
 
     /**
-     * @param string $type
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-    }
-
-    /**
      * @param string $buildingName
      */
     public function setBuildingName($buildingName)
@@ -181,14 +168,6 @@ class ValuationRequest
     public function setReference($reference)
     {
         $this->reference = $reference;
-    }
-
-    /**
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->type;
     }
 
     /**
