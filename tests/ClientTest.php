@@ -75,6 +75,7 @@ class ClientTest extends AbstractTestCase
         foreach (ResponseExceptionFactory::$messages as $code => $message) {
             $errors[] = [$code, $message];
         }
+
         return $errors;
     }
 
@@ -273,12 +274,11 @@ class ClientTest extends AbstractTestCase
                         'emailaddress' => 'joe@email.com',
                         'name' => 'Joe Bloggs',
                         'phone' => '01789123456',
-                    ]
+                    ],
                 ]
             )
             ->andReturn($stream)
             ->once();
-
 
         $client = new Client(
             $this->getConfig(),

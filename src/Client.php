@@ -118,6 +118,5 @@ class Client
                 $e->getCode()
             );
         }
-
     }
 }
