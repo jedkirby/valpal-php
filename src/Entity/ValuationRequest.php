@@ -81,16 +81,16 @@ class ValuationRequest
         $phone = null,
         $reference = null
     ) {
-        $this->buildingName = $buildingName;
-        $this->subBuildingName = $subBuildingName;
-        $this->number = $number;
-        $this->street = $street;
-        $this->dependentStreet = $dependentStreet;
-        $this->postcode = $postcode;
-        $this->email = $email;
-        $this->name = $name;
-        $this->phone = $phone;
-        $this->reference = $reference;
+        $this->buildingName = (string) $buildingName;
+        $this->subBuildingName = (string) $subBuildingName;
+        $this->number = (string) $number;
+        $this->street = (string) $street;
+        $this->dependentStreet = (string) $dependentStreet;
+        $this->postcode = (string) $postcode;
+        $this->email = (string) $email;
+        $this->name = (string) $name;
+        $this->phone = (string) $phone;
+        $this->reference = (string) $reference;
     }
 
     /**
@@ -98,7 +98,7 @@ class ValuationRequest
      */
     public function setBuildingName($buildingName)
     {
-        $this->buildingName = $buildingName;
+        $this->buildingName = (string) $buildingName;
     }
 
     /**
@@ -106,7 +106,7 @@ class ValuationRequest
      */
     public function setSubBuildingName($subBuildingName)
     {
-        $this->subBuildingName = $subBuildingName;
+        $this->subBuildingName = (string) $subBuildingName;
     }
 
     /**
@@ -114,7 +114,7 @@ class ValuationRequest
      */
     public function setNumber($number)
     {
-        $this->number = $number;
+        $this->number = (string) $number;
     }
 
     /**
@@ -122,7 +122,7 @@ class ValuationRequest
      */
     public function setStreet($street)
     {
-        $this->street = $street;
+        $this->street = (string) $street;
     }
 
     /**
@@ -130,7 +130,7 @@ class ValuationRequest
      */
     public function setDependentStreet($dependentStreet)
     {
-        $this->dependentStreet = $dependentStreet;
+        $this->dependentStreet = (string) $dependentStreet;
     }
 
     /**
@@ -138,7 +138,7 @@ class ValuationRequest
      */
     public function setPostcode($postcode)
     {
-        $this->postcode = $postcode;
+        $this->postcode = (string) $postcode;
     }
 
     /**
@@ -146,7 +146,7 @@ class ValuationRequest
      */
     public function setEmail($email)
     {
-        $this->email = $email;
+        $this->email = (string) $email;
     }
 
     /**
@@ -154,7 +154,7 @@ class ValuationRequest
      */
     public function setName($name)
     {
-        $this->name = $name;
+        $this->name = (string) $name;
     }
 
     /**
@@ -162,7 +162,7 @@ class ValuationRequest
      */
     public function setPhone($phone)
     {
-        $this->phone = $phone;
+        $this->phone = (string) $phone;
     }
 
     /**
@@ -170,7 +170,7 @@ class ValuationRequest
      */
     public function setReference($reference)
     {
-        $this->reference = $reference;
+        $this->reference = (string) $reference;
     }
 
     /**
