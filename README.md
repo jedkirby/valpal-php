@@ -137,6 +137,13 @@ In addition to the public getter methods in the `LettingValuation` and `SalesVal
 - `$valuation->getRentalValuation()` `string` : `£500`
 - `$valuation->getMaxRentalValuation()` `string` : `£600`
 
+All of the above three valuations have the following public getter helper methods:
+
+- `$valuation->getType()` `string` : `letting`, `sales`, or `both`
+- `$valuation->isLetting()` `boolean`
+- `$valuation->isSales()` `boolean`
+- `$valuation->isLettingAndSales()` `boolean`
+
 ### Exceptions
 
 When something goes wrong during the request or the parsing of the API data, this package will throw a single exception with different error messages. The following is the exception that you'll be able to catch and process, it extends [PHP's default exception](http://php.net/manual/en/class.exception.php):
