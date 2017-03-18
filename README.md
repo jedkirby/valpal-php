@@ -119,13 +119,13 @@ Depending on the request type that's called, you'll receive a different type of 
 
 Both the above entities have the following public getter methods:
 
-- `$valuation->getMinValuation()`
-- `$valuation->getValuation()`
-- `$valuation->getMaxValuation()`
-- `$valuation->getPropertyType()`
-- `$valuation->getTenure()`
-- `$valuation->getBedrooms()`
-- `$valuation->getPropertyConstructionYear()`
+- `$valuation->getMinValuation()` `string` : `£130000`
+- `$valuation->getValuation()` `string` : `£187500`
+- `$valuation->getMaxValuation()` `string` : `£256800`
+- `$valuation->getPropertyType()` `string` : `Flat`
+- `$valuation->getTenure()` `string` : `Leasehold`
+- `$valuation->getBedrooms()` `int` : `2`
+- `$valuation->getPropertyConstructionYear()` `int` : `1988`
 
 The third response entity is:
 
@@ -133,9 +133,9 @@ The third response entity is:
 
 In addition to the public getter methods in the `LettingValuation` and `SalesValuation` entities, the `BothValuation` entity provides the following:
 
-- `$valuation->getMinRentalValuation()`
-- `$valuation->getRentalValuation()`
-- `$valuation->getMaxRentalValuation()`
+- `$valuation->getMinRentalValuation()` `string` : `£400`
+- `$valuation->getRentalValuation()` `string` : `£500`
+- `$valuation->getMaxRentalValuation()` `string` : `£600`
 
 ### Exceptions
 

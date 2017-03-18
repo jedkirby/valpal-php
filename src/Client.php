@@ -36,7 +36,7 @@ class Client
     /**
      * @param ValuationRequest $request
      *
-     * @return Entity\AbstractValuation
+     * @return Entity\LettingValuation
      */
     public function getLettingValuation(ValuationRequest $request)
     {
@@ -46,7 +46,7 @@ class Client
     /**
      * @param ValuationRequest $request
      *
-     * @return Entity\AbstractValuation
+     * @return Entity\SalesValuation
      */
     public function getSalesValuation(ValuationRequest $request)
     {
@@ -56,7 +56,7 @@ class Client
     /**
      * @param ValuationRequest $request
      *
-     * @return Entity\AbstractValuation
+     * @return Entity\BothValuation
      */
     public function getBothValuations(ValuationRequest $request)
     {
