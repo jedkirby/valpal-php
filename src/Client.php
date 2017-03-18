@@ -117,10 +117,6 @@ class Client
                 ucfirst($type)
             );
 
-            if (!class_exists($entity)) {
-                throw new ResponseException(sprintf('Unable to create the valuation entity "%s".', $entity));
-            }
-
             return $entity::fromXml($xml);
         } catch (Exception $e) {
             throw new ResponseException(
