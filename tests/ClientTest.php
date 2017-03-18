@@ -4,6 +4,8 @@ namespace Jedkirby\ValPal\Tests;
 
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Psr7\Response;
+use GuzzleHttp\Psr7\Stream;
 use Jedkirby\ValPal\Client;
 use Jedkirby\ValPal\Config;
 use Jedkirby\ValPal\Entity\BothValuation;
@@ -24,17 +26,18 @@ class ClientTest extends AbstractTestCase
         );
     }
 
-    private function getHttpClient($body)
+    private function getHttpClient($stream, $code = 200)
     {
         return Mockery::mock(
             HttpClient::class,
             [
                 'request' => Mockery::mock(
-                    Stream::class,
+                    Response::class,
                     [
-                        'getBody' => $body,
+                        'getBody' => new Stream($stream),
+                        'getStatusCode' => $code
                     ]
-                ),
+                )
             ]
         );
     }
@@ -55,13 +58,14 @@ class ClientTest extends AbstractTestCase
         );
     }
 
-    private function getResponseFixture($filename)
+    private function getResponseFixtureStream($filename)
     {
-        return file_get_contents(
+        return fopen(
             sprintf(
                 './tests/Fixtures/Responses/%s',
                 $filename
-            )
+            ),
+            'r'
         );
     }
 
@@ -81,7 +85,7 @@ class ClientTest extends AbstractTestCase
      */
     public function testErrorResponseHandling($code, $message)
     {
-        $body = $this->getResponseFixture(
+        $stream = $this->getResponseFixtureStream(
             sprintf(
                 'Errors/%s.xml',
                 $code
@@ -90,7 +94,7 @@ class ClientTest extends AbstractTestCase
 
         $client = new Client(
             $this->getConfig(),
-            $this->getHttpClient($body)
+            $this->getHttpClient($stream)
         );
 
         try {
@@ -102,6 +106,24 @@ class ClientTest extends AbstractTestCase
             $this->assertEquals($e->getMessage(), $message);
             throw $e;
         }
+    }
+
+    /**
+     * @expectedException \Jedkirby\ValPal\Exception\ResponseException
+     * @expectedExceptionMessage Unable to process valuation
+     */
+    public function testEmptyResponseHandling()
+    {
+        $stream = $this->getResponseFixtureStream('Invalid/empty.xml');
+
+        $client = new Client(
+            $this->getConfig(),
+            $this->getHttpClient($stream)
+        );
+
+        $client->getLettingValuation(
+            $this->getValuationRequest()
+        );
     }
 
     /**
@@ -131,11 +153,11 @@ class ClientTest extends AbstractTestCase
      */
     public function testInvalidXmlErrorHandling()
     {
-        $body = $this->getResponseFixture('Invalid/pound.xml');
+        $stream = $this->getResponseFixtureStream('Invalid/pound.xml');
 
         $client = new Client(
             $this->getConfig(),
-            $this->getHttpClient($body)
+            $this->getHttpClient($stream)
         );
 
         $client->getLettingValuation(
@@ -143,13 +165,85 @@ class ClientTest extends AbstractTestCase
         );
     }
 
-    public function testSuccessForLettingsType()
+    public function guzzleResponseErrorCodes()
     {
-        $body = $this->getResponseFixture('Successful/lettings.xml');
+        return [
+            [400],
+            [401],
+            [402],
+            [403],
+            [404],
+            [405],
+            [406],
+            [407],
+            [408],
+            [409],
+            [410],
+            [411],
+            [412],
+            [413],
+            [414],
+            [415],
+            [416],
+            [417],
+            [422],
+            [423],
+            [424],
+            [425],
+            [426],
+            [428],
+            [429],
+            [431],
+            [500],
+            [501],
+            [502],
+            [503],
+            [504],
+            [505],
+            [506],
+            [507],
+            [508],
+            [510],
+            [511],
+        ];
+    }
+
+    /**
+     * @dataProvider guzzleResponseErrorCodes
+     * @expectedException \Jedkirby\ValPal\Exception\ResponseException
+     */
+    public function testGuzzleResponseErrorCodesConvertToExceptions($code)
+    {
+        $httpClient = Mockery::mock(HttpClient::class);
+        $httpClient
+            ->shouldReceive('request')
+            ->andReturn(
+                new Response($code)
+            )
+            ->once();
 
         $client = new Client(
             $this->getConfig(),
-            $this->getHttpClient($body)
+            $httpClient
+        );
+
+        try {
+            $client->getBothValuations(
+                $this->getValuationRequest()
+            );
+        } catch (ResponseException $e) {
+            $this->assertEquals($e->getCode(), $code);
+            throw $e;
+        }
+    }
+
+    public function testSuccessForLettingsType()
+    {
+        $stream = $this->getResponseFixtureStream('Successful/lettings.xml');
+
+        $client = new Client(
+            $this->getConfig(),
+            $this->getHttpClient($stream)
         );
 
         $valuation = $client->getLettingValuation(
@@ -175,11 +269,11 @@ class ClientTest extends AbstractTestCase
 
     public function testSuccessForSalesType()
     {
-        $body = $this->getResponseFixture('Successful/sales.xml');
+        $stream = $this->getResponseFixtureStream('Successful/sales.xml');
 
         $client = new Client(
             $this->getConfig(),
-            $this->getHttpClient($body)
+            $this->getHttpClient($stream)
         );
 
         $valuation = $client->getSalesValuation(
@@ -205,11 +299,11 @@ class ClientTest extends AbstractTestCase
 
     public function testSuccessForBothType()
     {
-        $body = $this->getResponseFixture('Successful/both.xml');
+        $stream = $this->getResponseFixtureStream('Successful/both.xml');
 
         $client = new Client(
             $this->getConfig(),
-            $this->getHttpClient($body)
+            $this->getHttpClient($stream)
         );
 
         $valuation = $client->getBothValuations(
@@ -235,12 +329,13 @@ class ClientTest extends AbstractTestCase
 
     public function testVerifyFormParamsAreCorrect()
     {
-        $body = $this->getResponseFixture('Successful/both.xml');
+        $stream = $this->getResponseFixtureStream('Successful/both.xml');
 
-        $stream = Mockery::mock(
-            Stream::class,
+        $response = Mockery::mock(
+            Response::class,
             [
-                'getBody' => $body,
+                'getBody' => new Stream($stream),
+                'getStatusCode' => 200
             ]
         );
 
@@ -269,7 +364,7 @@ class ClientTest extends AbstractTestCase
                     ],
                 ]
             )
-            ->andReturn($stream)
+            ->andReturn($response)
             ->once();
 
         $client = new Client(

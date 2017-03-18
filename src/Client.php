@@ -97,6 +97,13 @@ class Client
                 ]
             );
 
+            if (!in_array($response->getStatusCode(), [200])) {
+                throw new ResponseException(
+                    $response->getReasonPhrase(),
+                    $response->getStatusCode()
+                );
+            }
+
             $xml = new XML($response->getBody());
             $code = (int) $xml->responsecode;
 
@@ -105,9 +112,14 @@ class Client
             }
 
             $entity = sprintf(
-                '\\Jedkirby\\ValPal\\Entity\\%sValuation',
+                '\\%s\\Entity\\%sValuation',
+                __NAMESPACE__,
                 ucfirst($type)
             );
+
+            if (!class_exists($entity)) {
+                throw new ResponseException(sprintf('Unable to create the valuation entity "%s".', $entity));
+            }
 
             return $entity::fromXml($xml);
         } catch (Exception $e) {

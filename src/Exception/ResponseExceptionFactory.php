@@ -7,9 +7,11 @@ class ResponseExceptionFactory
     /**
      * @var string
      */
-    const GENERIC_ERROR = 'Unable to process valuation.';
+    const GENERIC_ERROR = 'Unable to process valuation';
 
     /**
+     * An array of ValPal specific error response codes and messages.
+     *
      * @var array
      */
     public static $messages = [
