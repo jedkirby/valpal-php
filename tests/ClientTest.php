@@ -35,9 +35,9 @@ class ClientTest extends AbstractTestCase
                     Response::class,
                     [
                         'getBody' => new Stream($stream),
-                        'getStatusCode' => $code
+                        'getStatusCode' => $code,
                     ]
-                )
+                ),
             ]
         );
     }
@@ -335,7 +335,7 @@ class ClientTest extends AbstractTestCase
             Response::class,
             [
                 'getBody' => new Stream($stream),
-                'getStatusCode' => 200
+                'getStatusCode' => 200,
             ]
         );
 
