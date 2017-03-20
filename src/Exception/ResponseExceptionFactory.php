@@ -47,5 +47,4 @@ final class ResponseExceptionFactory
     {
         return static::$messages;
     }
-
 }
