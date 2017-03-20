@@ -10,6 +10,11 @@ class Config
     /**
      * @var string
      */
+    const ENDPOINT = 'https://www.valpal.co.uk/api';
+
+    /**
+     * @var string
+     */
     private $username;
 
     /**
@@ -36,7 +41,7 @@ class Config
     public function __construct(
         $username,
         $password,
-        $endpoint = 'https://www.valpal.co.uk/api',
+        $endpoint = self::ENDPOINT,
         $debug = false
     ) {
         $this->username = (string) $username;

@@ -14,7 +14,7 @@ final class ResponseExceptionFactory
      *
      * @var array
      */
-    public static $messages = [
+    private static $messages = [
         400 => 'Error in username and/or password',
         401 => 'Error in postcode format',
         408 => 'Error in address or cannot match to a valid PAF address',
@@ -39,4 +39,13 @@ final class ResponseExceptionFactory
             $code
         );
     }
+
+    /**
+     * @return array
+     */
+    public static function getMessages()
+    {
+        return static::$messages;
+    }
+
 }

@@ -72,7 +72,7 @@ class ClientTest extends AbstractTestCase
     public function errorResponseProvider()
     {
         $errors = [];
-        foreach (ResponseExceptionFactory::$messages as $code => $message) {
+        foreach (ResponseExceptionFactory::getMessages() as $code => $message) {
             $errors[] = [$code, $message];
         }
 
