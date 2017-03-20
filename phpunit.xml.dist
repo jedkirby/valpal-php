@@ -4,7 +4,9 @@
     colors="true"
     convertErrorsToExceptions="true"
     convertNoticesToExceptions="true"
-    convertWarningsToExceptions="true">
+    convertWarningsToExceptions="true"
+    processIsolation="false"
+    stopOnFailure="false">
 
     <logging>
         <log type="coverage-clover" target="build/logs/clover.xml"/>

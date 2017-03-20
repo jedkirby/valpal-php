@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<response>
+    <responsecode>201</responsecode>
+    <minvaluation>£130000</minvaluation>
+    <valuation>£187500</valuation>
+    <maxvaluation>£256800</maxvaluation>
+    <propertytype>Flat</propertytype>
+    <tenure>Leasehold</tenure>
+    <bedrooms>2</bedrooms>
+    <yearofpropertyconstruction>1988</yearofpropertyconstruction>
+    <minrentalvaluation>£400</minrentalvaluation>
+    <rentalvaluation>£500</rentalvaluation>
+    <maxrentalvaluation>£600</maxrentalvaluation>
+</response>

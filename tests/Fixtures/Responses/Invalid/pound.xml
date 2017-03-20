@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<response>
+    <responsecode>201</responsecode>
+    <minvaluation>&pound;130000</minvaluation>
+    <valuation>&pound;187500</valuation>
+    <maxvaluation>&pound;256800</maxvaluation>
+    <propertytype>Flat</propertytype>
+    <tenure>Leasehold</tenure>
+    <bedrooms>2</bedrooms>
+    <yearofpropertyconstruction>1988</yearofpropertyconstruction>
+    <minrentalvaluation>&pound;400</minrentalvaluation>
+    <rentalvaluation>&pound;500</rentalvaluation>
+    <maxrentalvaluation>&pound;600</maxrentalvaluation>
+</response>

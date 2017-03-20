@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<response>
+    <responsecode>201</responsecode>
+    <minvaluation>£150000</minvaluation>
+    <valuation>£200000</valuation>
+    <maxvaluation>£300000</maxvaluation>
+    <propertytype>Flat</propertytype>
+    <tenure>Leasehold</tenure>
+    <bedrooms>1</bedrooms>
+    <yearofpropertyconstruction>1973</yearofpropertyconstruction>
+</response>
