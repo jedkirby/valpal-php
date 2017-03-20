@@ -78,7 +78,7 @@ class Client
                 'POST',
                 $this->config->getEndpoint(),
                 [
-                    'debug' => $this->config->getDebug(),
+                    'debug' => $this->config->isDebug(),
                     'form_params' => [
                         'username' => $this->config->getUsername(),
                         'pass' => $this->config->getPassword(),

@@ -2,7 +2,7 @@
 
 namespace Jedkirby\ValPal\Exception;
 
-class ResponseExceptionFactory
+final class ResponseExceptionFactory
 {
     /**
      * @var string

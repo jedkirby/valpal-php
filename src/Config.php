@@ -104,7 +104,7 @@ class Config
     /**
      * @return bool
      */
-    public function getDebug()
+    public function isDebug()
     {
         return $this->debug;
     }

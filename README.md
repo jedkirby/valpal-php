@@ -47,7 +47,7 @@ The class also has the following getter public methods:
 - `$config->getUsername()` `string` : `james.kirby`
 - `$config->getPassword()` `string` : `89b8v0gq9ea`
 - `$config->getEndpoint()` `string` : `https://www.valpal.co.uk/api`
-- `$config->getDebug()` `boolean` : `false`
+- `$config->isDebug()` `boolean` : `false`
 
 And has the following setter methods:
 
@@ -58,7 +58,7 @@ And has the following setter methods:
 
 ### Valuation Request
 
-Before being able to make any type of request, it's required that you create a valuation request object which, in combined with the above `Config` class, will eventually be passed through to the `Client` class to form a complete request.
+Before being able to make any type of request, it's required that you create a valuation request object which, when combined with the above `Config` class, will eventually be passed through to the `Client` class to form a complete request.
 
 All the below options are correct as defined by [PAF].
 
@@ -108,7 +108,7 @@ With the client object, there are three public methods available to use, which d
 - `$client->getSalesValuation(ValuationRequest $request)`
 - `$client->getBothValuations(ValuationRequest $request)`
 
-Each of the above methods will return a single valuation entity, providing there were no error's during the request.
+Each of the above methods will return a single valuation entity, providing there were no errors during the request.
 
 ### Responses
 
@@ -148,7 +148,7 @@ All of the above three valuations have the following public getter helper method
 
 When something goes wrong during the request or the parsing of the API data, this package will throw a single exception with different error messages. The following is the exception that you'll be able to catch and process, it extends [PHP's default exception](http://php.net/manual/en/class.exception.php):
 
-```php
+``` php
 \Jedkirby\ValPal\Exception\ResponseException;
 ```
 

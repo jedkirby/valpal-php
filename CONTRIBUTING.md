@@ -1,7 +1,7 @@
 Contributing
 -------
 
-This package accept contributions via Pull Requests on [Github](https://github.com/jedkirby/valpal-php).
+This package accepts contributions via Pull Requests on [Github](https://github.com/jedkirby/valpal-php).
 
 ### Pull Requests
 
