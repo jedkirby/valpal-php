@@ -1,5 +1,22 @@
 {
     "name": "jedkirby/valpal-php",
+    "description": "A simple API wrapper, written in PHP, for the ValPal API, provided by Angels Media.",
+    "keywords": [
+        "php",
+        "valpal",
+        "api",
+        "composer"
+    ],
+    "license": "MIT",
+    "homepage": "https://valpal.co.uk",
+    "authors": [
+        {
+            "name": "James Kirby",
+            "email": "me@jedkirby.com",
+            "homepage": "https://jedkirby.com",
+            "role": "Developer"
+        }
+    ],
     "require": {
         "php": ">=5.6.4",
         "guzzlehttp/guzzle": "^6.2"
