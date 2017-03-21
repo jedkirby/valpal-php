@@ -3,7 +3,7 @@ ValPal PHP
 [![Author](https://img.shields.io/badge/author-@jedkirby-blue.svg?style=flat-square)](https://twitter.com/jedkirby)
 [![Build Status](https://img.shields.io/travis/jedkirby/valpal-php/master.svg?style=flat-square)](https://travis-ci.org/jedkirby/valpal-php)
 [![Test Coverage](https://img.shields.io/coveralls/jedkirby/valpal-php/master.svg?style=flat-square)](https://coveralls.io/github/jedkirby/valpal-php)
-[![Packagist](https://img.shields.io/packagist/v/jedkirby/valpal-php.svg?style=flat-square)](https://packagist.org/packages/jedkirby/valpal-php)
+[![Packagist](https://img.shields.io/packagist/vpre/jedkirby/valpal-php.svg?style=flat-square)](https://packagist.org/packages/jedkirby/valpal-php)
 [![Packagist](https://img.shields.io/packagist/l/jedkirby/valpal-php.svg?style=flat-square)](https://github.com/jedkirby/valpal-php/blob/master/LICENSE)
 
 A simple API wrapper, written in PHP, for the ValPal API, provided by Angels Media - https://valpal.co.uk.
