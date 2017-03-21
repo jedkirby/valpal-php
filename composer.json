@@ -12,7 +12,9 @@
     "authors": [
         {
             "name": "James Kirby",
-            "email": "me@jedkirby.com"
+            "email": "me@jedkirby.com",
+            "homepage": "https://jedkirby.com",
+            "role": "Developer"
         }
     ],
     "require": {
